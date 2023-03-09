@@ -5,8 +5,9 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Sign Up</title>
-	<link rel="stylesheet" href="sign-up.css" />
-	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="CSS\sign-up.css" />
+	<link rel="stylesheet" href="CSS\style.css" />
+	<script src="JavaScript\password_checker.js"></script>
 </head>
 
 <body>
@@ -23,7 +24,10 @@
 					<input type="email" id="email" placeholder="Email" required />
 				</div>
 				<div class="password">
-					<input type="password" id="password" placeholder="Password" required />
+					<input type="password" id="password" placeholder="password" required />
+				</div>
+				<div class="confirm-password">
+					<input type="password" id="confirm-password" placeholder="confirm-password"n required>
 				</div>
 				<div class="sign-up">
 					<button class="btn-color" id="signup" type="submit">
@@ -32,7 +36,7 @@
 					</button>
 				</div>
 			</form>
-			<p>Already have an account? <a href="login.html">Login</a></p>
+			<p>Already have an account? <a href=HTML\login.html">Login</a></p>
 			<div class="google">
 				<button class="btn-google" id="sign-in">
 					<img src="image/Google.png" width="24" alt="" />
