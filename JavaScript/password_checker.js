@@ -6,6 +6,6 @@ confirmPasswordInput.addEventListener("input", function() {
   if (passwordInput.value !== confirmPasswordInput.value) {
     passwordError.textContent = "Passwords do not match.";
   } else {
-    passwordError.textContent = "";
+    temppasswordError.textContent = "";
   }
 });
