@@ -6,7 +6,7 @@
 	align-items: center;
 	border-bottom: 1px solid rgb(189, 189, 189);
 	position: fixed;
-	background: #f1f1f1;
+	background: #1eafa3;
 }
 .nav-col-input {
 	width: 50%;
@@ -60,7 +60,7 @@ p .fa-book {
 .dropdown-content {
 	display: none;
 	position: absolute;
-	background-color: #f1f1f1;
+	background-color: #1ccbc8;
 	min-width: 160px;
 	overflow: auto;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -75,7 +75,7 @@ p .fa-book {
 }
 
 .dropdown a:hover {
-	background-color: #ddd;
+	background-color: #30d6df;
 }
 
 .show {
