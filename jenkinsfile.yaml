@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers {
+        scm '*/5 * * * *'  // poll SCM every 5 minutes
+    }
     stages {
         stage('Clone') {
             steps {
