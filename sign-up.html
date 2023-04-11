@@ -7,7 +7,6 @@
 	<title>Sign Up</title>
 	<link rel="stylesheet" href="CSS\sign-up.css" />
 	<link rel="stylesheet" href="CSS\style.css" />
-	<script src="JavaScript\password_checker.js"></script>
 </head>
 
 <body>
@@ -38,7 +37,7 @@
 			</form>
 			<p>Already have an account? <a href="login.html">Login</a></p>
 			<div class="google">
-				<button class="btn-google" id="sign-in">
+				<button class="btn-google" id="signin">
 					<img src="image/Google.png" width="24" alt="" />
 					<span>Sign up with Google</span>
 				</button>
@@ -46,17 +45,94 @@
 		</div>
 	</div>
 
-	<script type="module">
-		import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js'
-		// Add Firebase products that you want to use
-		import { getAuth } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js'
-		import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js'
-		import firebaseConfig from '../js/init-firebase.js'
 
-	</script>
-	<script src="JavaScript\authentication.js" type="module"></script>
 
 
 </body>
+<script type="module">
+	// Import the functions you need from the SDKs you need
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+	import { getAuth ,GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+	// TODO: Add SDKs for Firebase products that you want to use
+	// https://firebase.google.com/docs/web/setup#available-libraries
+  
+	// Your web app's Firebase configuration
+	const firebaseConfig = {
+	  apiKey: "AIzaSyAERzNtPbIrrm8bmCzm9j79yQCRiACEKPo",
+	  authDomain: "auth-db86a.firebaseapp.com",
+	  projectId: "auth-db86a",
+	  storageBucket: "auth-db86a.appspot.com",
+	  messagingSenderId: "700716211844",
+	  appId: "1:700716211844:web:669e0b7ead00a8d922ecd1"
+	};
+  
+	// Initialize Firebase
+	const app = initializeApp(firebaseConfig);
+	const auth = getAuth(app);
+	const provider = new GoogleAuthProvider(app);
+
+	signin.addEventListener('click',(e) => {
+
+		// signInWithRedirect(auth, provider);
+
+// 		getRedirectResult(auth)
+//   .then((result) => {
+//     // This gives you a Google Access Token. You can use it to access Google APIs.
+//     const credential = GoogleAuthProvider.credentialFromResult(result);
+//     const token = credential.accessToken;
+
+//     // The signed-in user info.
+//     const user = result.user;
+//     // IdP data available using getAdditionalUserInfo(result)
+//     // ...
+//   }).catch((error) => {
+//     // Handle Errors here.
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     // The email of the user's account used.
+//     const email = error.customData.email;
+//     // The AuthCredential type that was used.
+//     const credential = GoogleAuthProvider.credentialFromError(error);
+//     // ...
+//   });
+
+signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+	alert(user.displayName);
+	window.location.href = '../index.html';
+			console.log('working', result)
+
+
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+
+	alert(errorMessage);
+  });
+});
+
+  login.addEventListener('click',(e) =>{
+	signOut(auth).then(() => {
+  // Sign-out successful.
+	}).catch((error) => {
+  // An error happened.
+	});
+
+  })
+
+  </script>	
 
 </html>
