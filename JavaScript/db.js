@@ -1,6 +1,6 @@
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js'
-import { getFirestore, collection, query, where, onSnapshot } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js'
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js'
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"
+import { getFirestore, collection, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js"
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
 import firebaseConfig from '../js/init-firebase.js'
 
 const newDoc = document.getElementById('createNewDoc');
