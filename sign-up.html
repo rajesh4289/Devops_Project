@@ -17,16 +17,16 @@
 				<p id="error"></p>
 				<p id="errorPwd"></p>
 				<div class="Fullname">
-					<input type="text" id="fullname" placeholder="Full Name" required />
+					<input type="text" id="fullname" placeholder="fullname" required />
 				</div>
 				<div class="email">
-					<input type="email" id="email" placeholder="Email" required />
+					<input type="email" id="email" placeholder="email" required />
 				</div>
 				<div class="password">
 					<input type="password" id="password" placeholder="password" required />
 				</div>
 				<div class="confirm-password">
-					<input type="password" id="confirm-password" placeholder="confirm-password"n required>
+					<input type="password" id="confirmpassword" placeholder="confirm-password"n required>
 				</div>
 				<div class="sign-up">
 					<button class="btn-color" id="signup" type="submit">
@@ -46,13 +46,16 @@
 	</div>
 
 
-
-
 </body>
+
+
 <script type="module">
 	// Import the functions you need from the SDKs you need
 	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-	import { getAuth ,GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+	import { getAuth ,GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithPopup, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+	import { getDatabase } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+
+
 	// TODO: Add SDKs for Firebase products that you want to use
 	// https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -68,8 +71,36 @@
   
 	// Initialize Firebase
 	const app = initializeApp(firebaseConfig);
-	const auth = getAuth(app);
+	const database=getDatabase(app);
+	const auth1 = getAuth(app);
 	const provider = new GoogleAuthProvider(app);
+
+
+signup.addEventListener('click',(e) => {
+
+	var fullname = document.getEmailById('fullname').value;
+	var email = document.getEmailById('email').value;
+	var password = document.getEmailById('password').value;
+	var confirmPassword= document.getEmailById('confirmpassword').value;
+
+	createUserWithEmailAndPassword(auth1, email, password)
+	.then((userCredential) => {
+		// Signed in 
+		const user = userCredential.user;
+		alert('user created!');
+		// ...
+	})
+	.catch((error) => {
+		const errorCode = error.code;
+		const errorMessage = error.message;
+
+		alert(errorMessage);
+		// ..
+	});
+
+
+});
+
 
 	signin.addEventListener('click',(e) => {
 
@@ -134,5 +165,7 @@ signInWithPopup(auth, provider)
   })
 
   </script>	
+
+
 
 </html>

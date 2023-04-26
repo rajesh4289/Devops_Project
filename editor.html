@@ -15,6 +15,8 @@
 
 <body>
 
+	
+
 	<h1>Agenda</h1>
     <form>
       <label for="task">New Task:</label>
@@ -100,12 +102,73 @@
 				</select>
 				<span id="status"></span>
 				<span id="log"></span>
+
 			</div>
 		</div>
 		<div class="edit-content">
-			<div class="editor" contenteditable="true" id="editor"></div>
+			<div class="editor" contenteditable="true" id="editor">Enter your content here...</div>
 			<p class="loading" id="loading">Saving document....</p>
-		</div>
+		  </div>
+		  
+		  <button onclick="saveFile()">Save File</button>
+		  
+		  <!-- Script to save content to Local Storage -->
+		  <script>
+			function saveFile() {
+			  const editor = document.getElementById('editor');
+			  const content = editor.textContent; // Get the plain text content
+			  
+			  // Create a Blob object with the content
+			  const blob = new Blob([content], {type: 'text/plain'});
+			  
+			  // Create a download link
+			  const downloadLink = document.createElement('a');
+			  downloadLink.href = URL.createObjectURL(blob);
+			  downloadLink.download = 'document.txt'; // Set the filename
+			  
+			  // Append the download link to the DOM and trigger a click event
+			  document.body.appendChild(downloadLink);
+			  downloadLink.click();
+			  
+			  // Clean up by removing the download link
+			  document.body.removeChild(downloadLink);
+			}
+			</script>
+
+<button onclick="uploadTextFile()">Upload Text File</button>
+
+<script>
+	function uploadTextFile() {
+	  const fileInput = document.createElement('input');
+	  fileInput.type = 'file';
+	  fileInput.accept = '.txt';
+	  
+	  // Event listener for file input change event
+	  fileInput.addEventListener('change', function(e) {
+		const file = e.target.files[0]; // Get the selected file
+		
+		if (file) {
+		  const reader = new FileReader();
+		  
+		  // Event listener for file reader load event
+		  reader.addEventListener('load', function(e) {
+			const fileContent = e.target.result; // Get the file content as text
+			// Set the file content in the contenteditable div
+			document.getElementById('editor').textContent = fileContent;
+		  });
+		  
+		  reader.readAsText(file); // Read the file as text
+		}
+	  });
+	  
+	  fileInput.click(); // Trigger file input click event
+	}
+	</script>
+
+		
+	
+		<!-- <input type="text" id="dataInput">
+		<button onclick="saveData()">Save Data</button> -->
 
 
 	</div>
@@ -114,5 +177,13 @@
 	<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
 	<script src="JavaScript/firebase-config.js"></script>
 	<script src="JavaScript/editor.js"></script>
+	<script>
+		function saveData() {
+		  var data = document.getElementById("dataInput").value;
+		  localStorage.setItem("myData", data);
+		  alert("Data saved to Local Storage!");
+		}
+		</script>
+		
 </body>
 </html>

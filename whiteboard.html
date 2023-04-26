@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-col-logo">
+          <a href="#"><i class="fa fa-book"></i> GDocs</a>
+        </div>
+        <div class="nav-col-input">
+          <form id="searchForm">
+            <input type="search" placeholder="Search" id="search" />
+          </form>
+        </div>
+        <div class="nav-col-img">
+          <a href="#"><i class="fa fa-user"></i></a>
+        </div>
+      </nav>
+      <div class="documents">
+        <div class="section group">
+          <div class="col span_1_of_3"><h4>Today</h4></div>
+          <div class="col span_1_of_3"><h4>Owned by anyone</h4></div>
+          <div class="col span_1_of_3"><h4>Last opened</h4></div>
+        </div>
+        <div id="documents"></div>
+      </div>
+      <div class="creat-new-doc">
+        <button class="btn-color" type="button" id="createNewDoc">
+          +
+        </button>
+      </div>
+</body>
+</html>
