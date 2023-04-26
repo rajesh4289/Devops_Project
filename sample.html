@@ -64,7 +64,7 @@ signInWithPopup(auth, provider)
   const user = result.user;
   // IdP data available using getAdditionalUserInfo(result)
   alert(user.displayName);
-  window.location.href = '../index.html';
+  window.location.href = '../editor.html';
           console.log('working', result)
 
 
@@ -100,7 +100,7 @@ signUp.addEventListener('click',(e) => {
           email: email
       })
 
-      alert('user created!');
+      window.location.href = '../editor.html';
       // ...
     })
     .catch((error) => {
